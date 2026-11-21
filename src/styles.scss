@@ -1,0 +1,62 @@
+:root {
+  --parchment: #f3e9d2;
+  --parchment-deep: #e8d9b5;
+  --paper-line: #d8c59c;
+  --ink: #2b1d12;
+  --ink-soft: #5b4630;
+  --ink-muted: #8a7458;
+  --crimson: #8c1c13;
+  --crimson-soft: #b8443a;
+  --gold: #b8860b;
+  --gold-soft: #e8c36a;
+  --lapis: #1f3b73;
+  --turquoise: #2a7f7a;
+  --night: #121829;
+
+  --font-body: 'EB Garamond', Georgia, serif;
+  --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--night);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+  }
+}
