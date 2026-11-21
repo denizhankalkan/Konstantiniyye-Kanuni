@@ -4,6 +4,7 @@ import { LETTERS, Letter } from '../data/letters';
 import { WHISPERS, Whisper } from '../data/whispers';
 import { CHARACTERS, CHARACTER_MAP, Character } from '../data/characters';
 import { SaveService } from './save.service';
+import { ACTORS } from '../data/actors';
 
 export type LineKind = 'narration' | 'speech' | 'thought' | 'pov';
 
@@ -27,6 +28,8 @@ export interface SceneMeta {
   date: string;
   scene: string;
   pov: string;
+  /** Sahnede boy boy duran canlandırılmış karakter (data/actors.ts) */
+  actor?: string;
 }
 
 export interface StatDelta {
@@ -207,18 +210,27 @@ export class StoryService {
         if (tags['chapter']) nextMeta.chapter = tags['chapter'];
         if (tags['date']) nextMeta.date = tags['date'];
         nextMeta.scene = tags['scene'];
+        nextMeta.actor = undefined;
         if (tags['pov']) {
           nextMeta.pov = tags['pov'];
           met.add(nextMeta.pov);
         }
-        if (text) nextLines.push(this.makeLine(text, tags, nextMeta.pov, met));
+        if (text) {
+          const line = this.makeLine(text, tags, nextMeta.pov, met);
+          if (line.speaker && ACTORS[line.speaker]) nextMeta.actor = line.speaker;
+          nextLines.push(line);
+        }
         this.pending = { lines: nextLines, meta: nextMeta };
         break;
       }
 
       if (tags['chapter']) meta.chapter = tags['chapter'];
       if (tags['date']) meta.date = tags['date'];
-      if (tags['scene']) meta.scene = tags['scene'];
+      if (tags['scene'] && tags['scene'] !== meta.scene) {
+        meta.scene = tags['scene'];
+        meta.actor = undefined;
+      }
+      if (tags['actor']) meta.actor = tags['actor'] === 'none' ? undefined : tags['actor'];
       if (tags['pov'] && tags['pov'] !== meta.pov) {
         meta.pov = tags['pov'];
         met.add(meta.pov);
@@ -232,7 +244,9 @@ export class StoryService {
       }
       if ('end_chapter' in tags) this.ended.set(true);
       if (!text) continue;
-      lines.push(this.makeLine(text, tags, meta.pov, met));
+      const line = this.makeLine(text, tags, meta.pov, met);
+      if (line.speaker && ACTORS[line.speaker]) meta.actor = line.speaker;
+      lines.push(line);
     }
 
     this.page.set(lines);

@@ -95,7 +95,7 @@ import { Component } from '@angular/core';
       <g class="walk-r slow">
         <use href="#fig-dervis" x="-30" y="148" width="22" height="56" style="color:#6e5a3e" />
       </g>
-      <use href="#fig-kadin" x="200" y="146" width="24" height="60" style="color:#7a2e5a" />
+      <use href="#fig-kadin" x="200" y="146" width="24" height="60" style="color:#3e6a6a" />
       <use href="#fig-tuccar" x="300" y="152" width="22" height="54" style="color:#3a2a4a" />
       <ellipse cx="212" cy="205" rx="12" ry="2.5" fill="#000" opacity="0.25" />
     </svg>

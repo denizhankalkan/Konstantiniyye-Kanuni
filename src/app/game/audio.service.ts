@@ -107,12 +107,17 @@ export class AudioService {
   }
 
   /** Mühür kırılma, kâğıt hışırtısı gibi tek seferlik sesler */
-  sfx(kind: 'seal' | 'choice' | 'page'): void {
+  sfx(kind: 'seal' | 'choice' | 'page' | 'step'): void {
     if (!this.ctx || !this.master) return;
     const t = this.ctx.currentTime;
     if (kind === 'seal') {
       this.burst(this.master, 'white', t, 0.12, 1800, 0.6, 2);
       this.tone(this.master, 140, t, 0.25, 0.25, 'triangle', 70);
+    } else if (kind === 'step') {
+      // çizmeli ayak sesi: tok bir vuruş ve taşa sürtünen deri
+      this.tone(this.master, 120, t, 0.12, 0.18, 'sine', 55);
+      this.burst(this.master, 'brown', t, 0.09, 420, 0.35, 0.9);
+      this.burst(this.master, 'pink', t + 0.03, 0.12, 2200, 0.05, 1.2);
     } else if (kind === 'page') {
       this.burst(this.master, 'pink', t, 0.35, 3000, 0.15, 0.8);
     } else {

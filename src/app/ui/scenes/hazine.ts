@@ -108,7 +108,6 @@ import { Component } from '@angular/core';
         />
       }
       <!-- Nazende, elinde Leonardo'nun kâğıdı -->
-      <use href="#fig-kadin" x="186" y="128" width="26" height="64" style="color:#7a2e5a" />
       <circle class="flicker slow" cx="214" cy="160" r="14" fill="url(#hz-paper)" />
       <rect x="208" y="155" width="12" height="9" fill="#f3e2b8" transform="rotate(-12 214 160)" />
       <!-- hazinedar ağa -->

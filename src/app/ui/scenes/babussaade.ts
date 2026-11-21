@@ -50,14 +50,11 @@ import { Component } from '@angular/core';
       <path d="M0 150H400" stroke="#a89a7c" stroke-width="2" />
       <path class="shaft" d="M120 0L260 0L320 220L80 220Z" fill="url(#bs-sun)" />
       <!-- taht ve padişah -->
-      <rect x="182" y="132" width="36" height="28" rx="2" fill="#d4a22e" />
-      <rect x="186" y="136" width="28" height="20" fill="#b8860b" />
-      <use href="#fig-sultan" x="188" y="114" width="24" height="60" style="color:#8c1c13" />
       <!-- vezirler -->
       @for (x of [118, 140, 162]; track x) {
         <use href="#fig-vezir" [attr.x]="x" y="146" width="22" height="56" style="color:#2f4a46" />
       }
-      <use href="#fig-vezir" x="234" y="146" width="22" height="56" style="color:#1f3b73" />
+      <use href="#fig-vezir" x="234" y="146" width="22" height="56" style="color:#5b4630" />
       <!-- yeniçeriler -->
       @for (x of [10, 34, 58, 82, 296, 320, 344, 368]; track x) {
         <use

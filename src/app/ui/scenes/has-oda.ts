@@ -86,7 +86,6 @@ import { Component } from '@angular/core';
           fill="#ffd27a"
         />
       }
-      <use href="#fig-vezir" x="300" y="132" width="24" height="60" style="color:#1f3b73" />
     </svg>
   `,
 })

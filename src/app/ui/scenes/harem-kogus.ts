@@ -84,7 +84,7 @@ import { Component } from '@angular/core';
       <rect x="0" y="172" width="400" height="48" fill="#000" opacity="0.25" />
       <!-- uyanan kızlar -->
       <use href="#fig-kadin" x="150" y="122" width="22" height="55" style="color:#3e6a6a" />
-      <use href="#fig-kadin" x="186" y="126" width="20" height="50" style="color:#7a2e5a" />
+      <use href="#fig-kadin" x="186" y="126" width="20" height="50" style="color:#5a6a3a" />
       <use href="#fig-kadin" x="250" y="118" width="22" height="58" style="color:#6b4a2b" />
       @for (d of dust; track $index) {
         <circle

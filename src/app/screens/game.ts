@@ -13,6 +13,7 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { STAT_KEYS, STAT_LABEL, StoryService } from '../game/story.service';
 import { AudioService } from '../game/audio.service';
 import { DEFAULT_SCENE, SCENES } from '../data/scenes';
+import { ACTORS } from '../data/actors';
 import { CHARACTER_MAP, FACTION_LABEL, Faction } from '../data/characters';
 import { Letter } from '../data/letters';
 import { SceneBanner } from '../ui/scene-banner';
@@ -43,6 +44,8 @@ export class GameScreen implements OnInit {
   protected readonly sealBroken = signal(false);
   protected readonly revealed = signal(false);
   protected readonly instant = signal(false);
+  /** Sahnedeki karakterin konuşma aralıkları; çenesi bu sürelerde oynar */
+  protected readonly talk = signal<[number, number][]>([]);
   protected readonly lineDelay = LINE_DELAY_MS;
 
   protected readonly mood = computed(() => (SCENES[this.story.meta().scene] ?? DEFAULT_SCENE).mood);

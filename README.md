@@ -23,6 +23,17 @@ Oyuncu, sarayda çalışan ve haftada bir çarşıya çıkan **Nazende Kalfa** i
 
 <img src="docs/galeri.png" width="820" alt="Galeri">
 
+### Canlandırılmış karakterler (ilk örnek: İbrahim)
+
+Şeffaf arka planlı tek bir resim, WebGL ile "canlı portreye" dönüştürülür (`src/app/ui/actor-stage.ts`):
+- İlk konuştuğu sahnede karşıdan **yürüyerek gelir** (adım adım sekme, ayak sesleri).
+- **Nefes alır**, **göz kırpar**, başını hafifçe oynatır.
+- **Konuşurken** çenesi hece hece açılıp kapanır, başı onaylar gibi oynar, sarkan eli küçük bir jest yapar.
+- Mekânın ışığını alır (gün batımında sıcak, mum ışığında turuncu kenar ışığı); arka plan bulanıklaşır.
+- Oyuncu görünmez: sahne senin gözünden. Yatay ekranda solda sahne, sağda yazılar.
+
+Yeni karakter eklemek: şeffaf PNG'yi `public/art/actors/<id>.webp` olarak koy, `src/app/data/actors.ts` içine göz, ağız, çene, boyun ve dirsek koordinatlarını gir. O karakter konuştuğunda sahneye kendiliğinden çıkar. Ink'te `# actor: <id>` ile konuşmadan da sahneye çıkarılabilir, `# actor: none` ile indirilir.
+
 ### Gerçek çizim eklemek
 
 Vektörler yer tutucu değil, kalıcı bir üslup. Ama elle çizilmiş ya da başka bir yolla üretilmiş görseller gelirse:

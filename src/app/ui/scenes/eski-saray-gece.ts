@@ -102,10 +102,8 @@ import { Component } from '@angular/core';
       }
 
       <!-- Nazende ve Hafsa Hatun -->
-      <use href="#fig-kadin" x="92" y="134" width="20" height="50" style="color:#7a2e5a" />
       <use href="#fig-kadin" x="304" y="124" width="24" height="60" style="color:#3c2a5e" />
       <ellipse cx="316" cy="184" rx="12" ry="2.5" fill="#000" opacity="0.4" />
-      <ellipse cx="102" cy="184" rx="10" ry="2" fill="#000" opacity="0.4" />
     </svg>
   `,
 })

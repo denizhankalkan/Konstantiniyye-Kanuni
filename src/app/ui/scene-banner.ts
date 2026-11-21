@@ -1,4 +1,5 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
+import { ActorStage } from './actor-stage';
 import { DEFAULT_SCENE, SCENES } from '../data/scenes';
 import { RASTER_SCENES } from '../data/art-manifest';
 import { SceneEskiSarayGece } from './scenes/eski-saray-gece';
@@ -17,6 +18,7 @@ import { SceneDivan } from './scenes/divan';
 @Component({
   selector: 'app-scene-banner',
   imports: [
+    ActorStage,
     SceneEskiSarayGece,
     SceneHaremKogus,
     SceneBedesten,
@@ -28,7 +30,7 @@ import { SceneDivan } from './scenes/divan';
   ],
   template: `
     @for (s of [scene()]; track s.id) {
-      <div class="art">
+      <div class="art" [class.focus]="!!actor()">
         @if (raster()) {
           <img [src]="'art/scenes/' + s.id + '.webp'" alt="" />
         } @else {
@@ -59,6 +61,15 @@ import { SceneDivan } from './scenes/divan';
             }
           }
         }
+        @if (actor(); as a) {
+          <app-actor-stage
+            [actorId]="a"
+            [talk]="talk()"
+            [tint]="light().tint"
+            [rim]="light().rim"
+            (step)="step.emit()"
+          />
+        }
         <div class="vignette" [class]="s.mood"></div>
         <div class="caption">
           <span class="name">{{ s.name }}</span>
@@ -67,6 +78,7 @@ import { SceneDivan } from './scenes/divan';
       </div>
     }
   `,
+  host: { '[class.with-actor]': '!!actor()' },
   styles: `
     :host {
       display: block;
@@ -82,13 +94,24 @@ import { SceneDivan } from './scenes/divan';
       inset: 0;
       animation: scene-in 900ms ease both;
     }
-    .art > *:not(.vignette):not(.caption),
+    .art > *:not(.vignette):not(.caption):not(app-actor-stage),
     img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       display: block;
+      transition: filter 900ms ease;
+    }
+    .art.focus > *:not(.vignette):not(.caption):not(app-actor-stage) {
+      filter: blur(2.5px) brightness(0.78) saturate(0.9);
+    }
+    :host(.with-actor) {
+      height: 47vh;
+      max-height: 560px;
+    }
+    :host {
+      transition: height 700ms ease;
     }
     img {
       object-fit: cover;
@@ -151,6 +174,25 @@ import { SceneDivan } from './scenes/divan';
 })
 export class SceneBanner {
   readonly sceneId = input.required<string>();
+  readonly actor = input<string | undefined>();
+  readonly talk = input<[number, number][]>([]);
+  readonly step = output<void>();
   protected readonly scene = computed(() => SCENES[this.sceneId()] ?? DEFAULT_SCENE);
   protected readonly raster = computed(() => RASTER_SCENES.has(this.scene().id));
+  /** Karakteri mekânın ışığıyla boya: gün batımında sıcak, mum ışığında turuncu kenar, karanlıkta loş */
+  protected readonly light = computed<{
+    tint: [number, number, number];
+    rim: [number, number, number];
+  }>(() => {
+    switch (this.scene().mood) {
+      case 'dusk':
+        return { tint: [1.03, 0.9, 0.8], rim: [1, 0.55, 0.25] };
+      case 'night':
+        return { tint: [0.8, 0.78, 0.9], rim: [1, 0.7, 0.35] };
+      case 'dark':
+        return { tint: [0.78, 0.68, 0.56], rim: [1, 0.7, 0.3] };
+      default:
+        return { tint: [1, 0.98, 0.95], rim: [0, 0, 0] };
+    }
+  });
 }

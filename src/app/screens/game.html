@@ -92,7 +92,12 @@
     </nav>
   </header>
 
-  <app-scene-banner [sceneId]="story.meta().scene" />
+  <app-scene-banner
+    [sceneId]="story.meta().scene"
+    [actor]="story.meta().actor"
+    [talk]="talk()"
+    (step)="audio.sfx('step')"
+  />
 
   <section class="stats" aria-label="Devlet göstergeleri">
     @for (k of statKeys; track k) {

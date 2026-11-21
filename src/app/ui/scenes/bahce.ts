@@ -67,8 +67,6 @@ import { Component } from '@angular/core';
         />
       }
       <!-- Süleyman ve İbrahim -->
-      <use href="#fig-sultan" x="120" y="150" width="22" height="56" style="color:#8c1c13" />
-      <use href="#fig-vezir" x="252" y="152" width="21" height="54" style="color:#1f3b73" />
       @for (f of flies; track $index) {
         <circle
           class="firefly"
