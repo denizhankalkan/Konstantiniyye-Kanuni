@@ -25,7 +25,7 @@ const LINE_DELAY_MS = 420;
   selector: 'app-game',
   imports: [SceneBanner, Portrait, StatIcon],
   templateUrl: './game.html',
-  styleUrl: './game.scss',
+  styleUrl: './game.css',
 })
 export class GameScreen implements OnInit {
   protected story = inject(StoryService);
