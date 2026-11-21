@@ -95,7 +95,20 @@ Elinden düşen mektubu yerden alırken bir satır gözüme çarpıyor: Sultan S
     ~ rel_hafsa -= 20
     ~ degis(harem, -10)
     ~ f_selim_oldu = true
-- -> carsi
+- -> sabah
+
+// ------------------------------------------------------------
+=== sabah ===
+# date: 24 Eylül 1520 · şafak
+# scene: harem-kogus
+Şafakla koğuş uyanıyor. Kafeslerin arasından süzülen ışık, kilimlerin üstüne altın çizgiler çiziyor.
+Kızlar saçlarını örerken fısıldaşıyor. Kimi Manisa'dan gelecek şehzadeyi, kimi kendi kaderini konuşuyor.
+{ rel_hafsa < 0:
+    Usta kalfa bana bakmıyor. Dün geceki sözlerim, sabah koğuşun duvarlarına sinmiş. # thought
+- else:
+    Kimse bir şey bilmiyor. Ben biliyorum. Bu ağırlığı ilk kez taşıyorum. # thought
+}
+-> carsi
 
 // ------------------------------------------------------------
 === carsi ===
@@ -220,7 +233,10 @@ Piri Paşa iki defter açıyor.
 - -> vezir
 
 = vezir
-Akşam, has odada yalnızız. İbrahim kemanını akort ediyor, ben pencereden Haliç'e bakıyorum.
+# date: 30 Eylül 1520 · akşam
+# scene: bahce
+Akşam, Hasbahçe'de yalnızız. Fıskiyenin sesi, Haliç'in üstünde kızıl bir gün batımı. Karşıda Galata Kulesi.
+İbrahim kemanını akort ediyor. Ben laleleri seyrediyorum.
 "Piri Paşa yaşlı, hünkârım. Babanızın adamı. Sizin vezirleriniz, sizin seçtikleriniz olmalı." # speaker: ibrahim
 * [Piri Paşa yerinde kalsın. Tecrübe, bu ilk yılda altından değerli]
     "Acele etmeyeceğiz, İbrahim. Ağaç önce kök salar."

@@ -8,10 +8,28 @@ Oyuncu, sarayda çalışan ve haftada bir çarşıya çıkan **Nazende Kalfa** i
 
 <p>
   <img src="docs/ekran-gece.png" width="200" alt="Eski Saray, gece">
-  <img src="docs/ekran-divan.png" width="200" alt="Babüssaade, karar anı">
+  <img src="docs/ekran-carsi.png" width="200" alt="Bedesten">
   <img src="docs/ekran-mektup.png" width="200" alt="Leonardo'nun mektubu">
   <img src="docs/ekran-son.png" width="200" alt="Bölüm sonu">
 </p>
+
+## Görsel ve ses
+
+- **8 mekân çizimi** (`src/app/ui/scenes/`): Eski Saray harem koridoru, kalfalar koğuşu, Cevahir Bedesteni, hazine odası, Babüssaade'de cülus, Hasbahçe, has oda, Kubbealtı. Hepsi vektör, telefonda keskin.
+- **Işık:** titreyen mumlar, kafesten süzülen huzmeler, toz zerreleri, altın pırıltısı, Haliç'te ışıltı, ateş böcekleri. Gece sahnelerinde sayfa da mum ışığı tonuna döner.
+- **İnsanlar:** sahnelerde vezirler, yeniçeriler, tüccarlar, dervişler, kadınlar. Çarşıda kalabalık yürür. Karakterler minyatür üslubunda portrelerle konuşur; başlıklarından tanınırlar (sorguçlu kavuk, kallavi, Kızılbaş tacı, Venedik beresi, Doç'un boynuzlu başlığı…).
+- **Ses** (`src/app/game/audio.service.ts`): tamamen kodla üretilir, dosya gerekmez. Mekâna göre cırcır böcekleri, rüzgâr, mum çıtırtısı, çarşı uğultusu, bakırcı çekici, sikke şıngırtısı, fıskiye, kuşlar, cülusta mehter davulu. Sakin sahnelerde **Hicaz makamında doğaçlama ney**. Mühür kırılınca ve karar verilince ses efekti. Üst bardan kapatılabilir.
+- **Galeri:** `/galeri` adresinde tüm mekânlar ve portreler. Çizimleri gözden geçirmek için.
+
+<img src="docs/galeri.png" width="820" alt="Galeri">
+
+### Gerçek çizim eklemek
+
+Vektörler yer tutucu değil, kalıcı bir üslup. Ama elle çizilmiş ya da başka bir yolla üretilmiş görseller gelirse:
+1. `public/art/scenes/<sahne-id>.webp` (20:11, en az 1600×880) veya `public/art/portraits/<karakter-id>.webp` (kare, en az 512) olarak koy.
+2. `src/app/data/art-manifest.ts` içindeki listeye id'yi ekle.
+
+Oyun o mekân ya da kişi için otomatik olarak resmi gösterir. Oyuncu yüzleri, dizi görüntüleri ve telifli tablolar kullanılmamalı.
 
 ## Şu an oynanabilen: Giriş · Cülus (Eylül–Kasım 1520)
 

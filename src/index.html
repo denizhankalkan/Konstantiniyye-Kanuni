@@ -13,6 +13,96 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
+    <!-- Sahne figürleri: <svg><use href="#fig-vezir" .../></svg>. Kaftan rengi currentColor ile verilir. -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="fig-vezir" viewBox="0 0 20 50">
+          <path d="M3.5 50L5.5 22Q10 17.5 14.5 22L16.5 50Z" fill="currentColor" />
+          <path d="M10 22V50" stroke="#000" stroke-opacity=".18" stroke-width=".8" />
+          <path
+            d="M5.8 27Q4 36 5.4 42M14.2 27Q16 36 14.6 42"
+            stroke="#000"
+            stroke-opacity=".2"
+            stroke-width="1.2"
+            fill="none"
+          />
+          <circle cx="10" cy="16.5" r="3.1" fill="#d8ad84" />
+          <path d="M7.2 17.8Q10 22.5 12.8 17.8Q10 19.4 7.2 17.8Z" fill="#3b2a1c" />
+          <path d="M6.4 14.4L7.1 3.6Q10 2.3 12.9 3.6L13.6 14.4Q10 15.4 6.4 14.4Z" fill="#f7f2e6" />
+          <path d="M6.7 12.4L13.3 5.2" stroke="#d4a22e" stroke-width="1.1" />
+        </symbol>
+        <symbol id="fig-sultan" viewBox="0 0 20 50">
+          <path d="M3 50L5.5 22Q10 17.5 14.5 22L17 50Z" fill="currentColor" />
+          <path d="M5.5 22L10 32L14.5 22" stroke="#e8c36a" stroke-width=".8" fill="none" />
+          <path d="M10 32V50" stroke="#e8c36a" stroke-width=".6" />
+          <circle cx="10" cy="16.8" r="3.1" fill="#d8ad84" />
+          <path d="M8.4 18.6Q10 17.6 11.6 18.6" stroke="#3b2a1c" stroke-width=".9" fill="none" />
+          <ellipse cx="10" cy="11.6" rx="6.2" ry="4.6" fill="#fbf8f0" />
+          <ellipse cx="10" cy="8" rx="2.4" ry="1.3" fill="#8c1c13" />
+          <path d="M10.2 10.5Q9.8 6 12.4 2.4Q11.4 6.5 11 10.5Z" fill="#1c1a18" />
+          <circle cx="10.3" cy="10.8" r="1" fill="#e8c36a" />
+        </symbol>
+        <symbol id="fig-yeniceri" viewBox="0 0 20 50">
+          <path d="M4.5 50L6 22Q10 18 14 22L15.5 50Z" fill="currentColor" />
+          <path d="M6 30H14" stroke="#e8c36a" stroke-width="1" />
+          <path d="M16.5 8V50" stroke="#5a4630" stroke-width=".9" />
+          <circle cx="10" cy="16.5" r="3" fill="#c99b70" />
+          <path d="M8 18.4Q10 17.4 12 18.4" stroke="#2b2018" stroke-width="1" fill="none" />
+          <path d="M7.4 14.2L8 1.8Q10 1 12 1.8L12.6 14.2Z" fill="#f4efe4" />
+          <path
+            d="M11.8 3.5Q17.5 9 15.5 24"
+            stroke="#f4efe4"
+            stroke-width="2.2"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <rect x="8.6" y="12" width="2.8" height="2.4" fill="#d4a22e" />
+        </symbol>
+        <symbol id="fig-kadin" viewBox="0 0 20 50">
+          <path d="M2.5 50Q4.5 26 10 13Q15.5 26 17.5 50Z" fill="currentColor" />
+          <path d="M5.5 30Q10 33 14.5 30" stroke="#e8c36a" stroke-width=".7" fill="none" />
+          <path d="M5.4 21Q5.6 11 10 10.4Q14.4 11 14.6 21Q10 18.5 5.4 21Z" fill="#f1e4d0" />
+          <ellipse cx="10" cy="16" rx="2.5" ry="3" fill="#e9c6a1" />
+          <path d="M8.2 11.8L8.6 8.2Q10 7.6 11.4 8.2L11.8 11.8Z" fill="#8c1c13" />
+        </symbol>
+        <symbol id="fig-tuccar" viewBox="0 0 20 50">
+          <path d="M4 50L5.5 23Q10 18.5 14.5 23L16 50Z" fill="currentColor" />
+          <path d="M5 44H15" stroke="#000" stroke-opacity=".2" stroke-width="1" />
+          <rect x="13.2" y="24" width="5.2" height="9" rx="1.5" fill="#a8865a" />
+          <circle cx="10" cy="17.2" r="3" fill="#c99b70" />
+          <path d="M7.4 18.2Q10 23.8 12.6 18.2Q10 19.8 7.4 18.2Z" fill="#2b2018" />
+          <ellipse cx="10" cy="13.4" rx="4.4" ry="2.6" fill="#efe6d4" />
+        </symbol>
+        <symbol id="fig-dervis" viewBox="0 0 20 50">
+          <path d="M3 50L5.5 22Q10 18.5 14.5 22L17 50Z" fill="currentColor" />
+          <circle cx="10" cy="17" r="3" fill="#a8774f" />
+          <path d="M7.3 18Q10 24 12.7 18Q10 19.6 7.3 18Z" fill="#1e1610" />
+          <path d="M7.6 14.6L8.2 2Q10 1.2 11.8 2L12.4 14.6Z" fill="#b89a72" />
+        </symbol>
+        <symbol id="fig-oturan" viewBox="0 0 30 34">
+          <path d="M2 34Q3 20 9 17Q15 14 21 17Q27 20 28 34Z" fill="currentColor" />
+          <path
+            d="M6 30Q15 26 24 30"
+            stroke="#000"
+            stroke-opacity=".18"
+            stroke-width="1.2"
+            fill="none"
+          />
+          <circle cx="15" cy="11.5" r="3.1" fill="#d8ad84" />
+          <path d="M12.2 12.8Q15 18 17.8 12.8Q15 14.4 12.2 12.8Z" fill="#7d7468" />
+          <path d="M11.4 9.4L12.1 0.6Q15 -0.6 17.9 0.6L18.6 9.4Q15 10.4 11.4 9.4Z" fill="#f7f2e6" />
+          <path d="M11.7 7.6L18.3 1.8" stroke="#d4a22e" stroke-width="1" />
+        </symbol>
+        <symbol id="fig-servi" viewBox="0 0 20 80">
+          <path d="M10 0Q16 22 15 50Q14 72 10 80Q6 72 5 50Q4 22 10 0Z" fill="currentColor" />
+        </symbol>
+        <symbol id="fig-lale" viewBox="0 0 10 20">
+          <path d="M5 20V8" stroke="#3e6a3a" stroke-width="1" />
+          <path d="M5 11Q2 13 1.5 9" stroke="#3e6a3a" stroke-width="1" fill="none" />
+          <path d="M2.4 8Q2 2 5 0.5Q8 2 7.6 8Q5 9.5 2.4 8Z" fill="currentColor" />
+        </symbol>
+      </defs>
+    </svg>
     <app-root></app-root>
   </body>
 </html>

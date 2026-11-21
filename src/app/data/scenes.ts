@@ -1,71 +1,70 @@
+import type { AmbienceId } from '../game/audio.service';
+
 export interface Scene {
   id: string;
   name: string;
   place: string;
-  /** gökyüzü, silüet ve vurgu renkleri */
-  sky: string;
-  land: string;
-  accent: string;
-  night?: boolean;
-  motif: 'domes' | 'gate' | 'window' | 'chest' | 'bazaar' | 'kubbealti';
+  ambience: AmbienceId;
+  /** Sayfa kâğıdının tonu: gece sahnelerinde mum ışığı gibi sıcaklaşır */
+  mood: 'day' | 'night' | 'dusk' | 'dark';
 }
 
 export const SCENES: Record<string, Scene> = {
   'eski-saray-gece': {
     id: 'eski-saray-gece',
     name: 'Eski Saray',
-    place: 'Bayezid',
-    sky: '#1c2340',
-    land: '#0e1222',
-    accent: '#e8c36a',
-    night: true,
-    motif: 'domes',
+    place: 'Harem koridoru · gece',
+    ambience: 'gece',
+    mood: 'night',
+  },
+  'harem-kogus': {
+    id: 'harem-kogus',
+    name: 'Kalfalar koğuşu',
+    place: 'Eski Saray · şafak',
+    ambience: 'kogus',
+    mood: 'day',
   },
   bedesten: {
     id: 'bedesten',
     name: 'Cevahir Bedesteni',
     place: 'Çarşı',
-    sky: '#e9c98f',
-    land: '#6b3e1f',
-    accent: '#8c1c13',
-    motif: 'bazaar',
+    ambience: 'carsi',
+    mood: 'day',
   },
   hazine: {
     id: 'hazine',
     name: 'Hazine odası',
     place: 'Yeni Saray',
-    sky: '#3a2a1a',
-    land: '#1d140c',
-    accent: '#d4a22e',
-    motif: 'chest',
+    ambience: 'hazine',
+    mood: 'dark',
   },
   babussaade: {
     id: 'babussaade',
     name: 'Babüssaade',
-    place: 'Yeni Saray',
-    sky: '#cfd9d6',
-    land: '#2f4a46',
-    accent: '#8c1c13',
-    motif: 'gate',
+    place: 'Yeni Saray · cülus',
+    ambience: 'avlu',
+    mood: 'day',
+  },
+  bahce: {
+    id: 'bahce',
+    name: 'Hasbahçe',
+    place: 'Yeni Saray · akşam',
+    ambience: 'bahce',
+    mood: 'dusk',
   },
   'has-oda': {
     id: 'has-oda',
     name: 'Has oda',
-    place: 'Yeni Saray',
-    sky: '#2b3d63',
-    land: '#15203a',
-    accent: '#e8c36a',
-    night: true,
-    motif: 'window',
+    place: 'Yeni Saray · gece',
+    ambience: 'hasoda',
+    mood: 'night',
   },
   divan: {
     id: 'divan',
     name: 'Kubbealtı',
     place: 'Divan-ı Hümayun',
-    sky: '#d9c7a3',
-    land: '#3b2b1a',
-    accent: '#1f3b73',
-    motif: 'kubbealti',
+    ambience: 'divan',
+    mood: 'day',
   },
 };
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { StoryService } from '../game/story.service';
+import { AudioService } from '../game/audio.service';
 
 @Component({
   selector: 'app-title',
@@ -156,6 +157,7 @@ import { StoryService } from '../game/story.service';
 })
 export class TitleScreen implements OnInit {
   private story = inject(StoryService);
+  private audio = inject(AudioService);
   private router = inject(Router);
   protected hasSave = signal(false);
 
@@ -164,11 +166,13 @@ export class TitleScreen implements OnInit {
   }
 
   async start() {
+    this.audio.unlock();
     await this.story.newGame();
     await this.router.navigateByUrl('/oyun');
   }
 
   async resume() {
+    this.audio.unlock();
     if (await this.story.continueGame()) await this.router.navigateByUrl('/oyun');
     else await this.start();
   }

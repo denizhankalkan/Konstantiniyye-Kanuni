@@ -60,3 +60,193 @@ button {
     transition-duration: 1ms !important;
   }
 }
+
+/* ---------- Sahne ışıkları ve hareketleri (ui/scenes/*) ---------- */
+.flicker {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: flicker 2.6s infinite ease-in-out;
+}
+.flicker.slow {
+  animation-duration: 4.2s;
+}
+.flame {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: flame 0.9s infinite ease-in-out alternate;
+}
+.shaft {
+  animation: shaft 7s infinite ease-in-out alternate;
+}
+.twinkle {
+  animation: twinkle 3s infinite ease-in-out;
+}
+.twinkle.d2 {
+  animation-delay: 1s;
+}
+.twinkle.d3 {
+  animation-delay: 2s;
+}
+.glint {
+  animation: glint 3.4s infinite ease-in-out;
+  opacity: 0;
+}
+.dust {
+  animation: dust 9s infinite linear;
+  opacity: 0;
+}
+.sway {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: sway 4s infinite ease-in-out alternate;
+}
+.walk-r {
+  animation: walk-r 26s infinite linear;
+}
+.walk-l {
+  animation: walk-l 32s infinite linear;
+}
+.walk-r.slow {
+  animation-duration: 40s;
+  animation-delay: -14s;
+}
+.drift {
+  animation: drift 40s infinite linear alternate;
+}
+.drift.slow {
+  animation-duration: 60s;
+}
+.shimmer {
+  animation: shimmer 2.8s infinite ease-in-out;
+}
+.fountain {
+  animation: fountain 1.4s infinite ease-in-out alternate;
+}
+.firefly {
+  animation: firefly 5s infinite ease-in-out;
+  opacity: 0;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  20% {
+    opacity: 0.7;
+    transform: scale(0.97);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+  70% {
+    opacity: 0.78;
+    transform: scale(0.99);
+  }
+}
+@keyframes flame {
+  from {
+    transform: scaleY(0.9) skewX(-3deg);
+  }
+  to {
+    transform: scaleY(1.12) skewX(3deg);
+  }
+}
+@keyframes shaft {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes twinkle {
+  50% {
+    opacity: 0.2;
+  }
+}
+@keyframes glint {
+  0%,
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes dust {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  20%,
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(14px, 30px);
+  }
+}
+@keyframes sway {
+  from {
+    transform: rotate(-2deg);
+  }
+  to {
+    transform: rotate(2deg);
+  }
+}
+@keyframes walk-r {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(460px);
+  }
+}
+@keyframes walk-l {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-460px);
+  }
+}
+@keyframes drift {
+  from {
+    transform: translateX(-20px);
+  }
+  to {
+    transform: translateX(40px);
+  }
+}
+@keyframes shimmer {
+  50% {
+    opacity: 0.15;
+    transform: translateX(4px);
+  }
+}
+@keyframes fountain {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes firefly {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(6px, -8px);
+  }
+}

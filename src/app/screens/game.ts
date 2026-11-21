@@ -11,6 +11,8 @@ import {
 import { Router } from '@angular/router';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { STAT_KEYS, STAT_LABEL, StoryService } from '../game/story.service';
+import { AudioService } from '../game/audio.service';
+import { DEFAULT_SCENE, SCENES } from '../data/scenes';
 import { CHARACTER_MAP, FACTION_LABEL, Faction } from '../data/characters';
 import { Letter } from '../data/letters';
 import { SceneBanner } from '../ui/scene-banner';
@@ -29,6 +31,7 @@ const LINE_DELAY_MS = 420;
 })
 export class GameScreen implements OnInit {
   protected story = inject(StoryService);
+  protected audio = inject(AudioService);
   private router = inject(Router);
   private scroller = viewChild<ElementRef<HTMLElement>>('scroller');
 
@@ -42,6 +45,7 @@ export class GameScreen implements OnInit {
   protected readonly instant = signal(false);
   protected readonly lineDelay = LINE_DELAY_MS;
 
+  protected readonly mood = computed(() => (SCENES[this.story.meta().scene] ?? DEFAULT_SCENE).mood);
   protected readonly povName = computed(() => CHARACTER_MAP.get(this.story.meta().pov)?.name ?? '');
   protected readonly peopleByFaction = computed(() => {
     const groups = new Map<Faction, ReturnType<typeof this.story.characters>>();
@@ -90,6 +94,9 @@ export class GameScreen implements OnInit {
       );
     });
     effect(() => {
+      this.audio.setAmbience((SCENES[this.story.meta().scene] ?? DEFAULT_SCENE).ambience);
+    });
+    effect(() => {
       const toasts = this.story.toasts();
       for (const t of toasts) setTimeout(() => this.story.dismissToast(t.id), 3200);
     });
@@ -110,6 +117,8 @@ export class GameScreen implements OnInit {
 
   protected async choose(index: number) {
     Haptics.impact({ style: ImpactStyle.Light }).catch(() => undefined);
+    this.audio.unlock();
+    this.audio.sfx('choice');
     this.story.choose(index);
   }
 
@@ -124,12 +133,14 @@ export class GameScreen implements OnInit {
   }
 
   protected readLetter(l: Letter) {
+    this.audio.sfx('page');
     this.openLetter.set(l);
     this.sealBroken.set(!!l.outgoing);
   }
 
   protected breakSeal() {
     Haptics.impact({ style: ImpactStyle.Medium }).catch(() => undefined);
+    this.audio.sfx('seal');
     this.sealBroken.set(true);
   }
 
