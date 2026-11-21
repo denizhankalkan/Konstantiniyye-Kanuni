@@ -61,6 +61,8 @@ src/app/ui/                  portre, sahne bandı, gösterge ikonları
 
 ## Çalıştırma
 
+Gerekenler: **Node.js 22.22.3 veya üstü** (Angular 22 bunu istiyor). nvm kullanıyorsan `nvm use` yeterli.
+
 ```bash
 npm install
 npm start            # http://localhost:4200 (ink otomatik derlenir)
